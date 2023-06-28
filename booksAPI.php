@@ -5,7 +5,7 @@
 require __DIR__ . '/guzzle_request.php';
 
 
-//Caminho (1) - Armazenar - (2) Listar tudo do banco - (3) Deletar do Banco - (4) Atualizar - (5) Mostrar um item do banco
+//Caminho (1) Armazenar -- (2) Listar tudo do banco -- (3) Deletar do Banco -- (4) Atualizar -- (5) Mostrar um item do banco
 $path= $argv[1];
 
 switch($path){
