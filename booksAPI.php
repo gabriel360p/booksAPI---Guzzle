@@ -2,22 +2,81 @@
 
 //Funciona
 
-use GuzzleHttp\Client;
+require __DIR__ . '/guzzle_request.php';
 
-require __DIR__ . '/vendor/autoload.php';
 
-$client = new Client();
+//Caminho (1) - Armazenar - (2) Listar tudo do banco - (3) Deletar do Banco - (4) Atualizar - (5) Mostrar um item do banco
+$path= $argv[1];
 
-// STORE ----------------------------------------------------------------------------------------------------------
-//aparentemente funciona - adicionando no banco de dados
-// $response = $client->request('POST', 'http://localhost:8000/books/store', [
-//     'json' => [
-//         'title' => 'A menina e o porco',
-//         'author' => 'Jason Bores'
-//     ]
-// ]);
+switch($path){
+    case 1://salvando no banco de dados
 
-// echo "Status: " . $response->getStatusCode() . PHP_EOL;
+        $title= $argv[2];
+
+        $author= $argv[3];
+
+        $request->store($title,$author);
+
+    break;
+
+    case 2://listando todos os itens do banco
+
+        $request->list();
+
+    break;
+
+    case 3://listando todos os itens do banco
+
+        $book= $argv[2];//pegando o id do livro
+
+        $request->delete($book);
+
+    break;
+
+    case 4://atualizando o livro
+
+        $book= $argv[2];//pegando o id do livro
+
+        $title= $argv[3];//pegando o novo titulo
+
+        $author= $argv[4];//pegando o novo autor
+
+        $request->update($book,$title,$author);
+
+    break;
+
+    case 5://listando todos os itens do banco
+
+        $book= $argv[2];//pegando o id do livro
+
+        $request->show($book);
+
+    break;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // STORE ----------------------------------------------------------------------------------------------------------
+    //aparentemente funciona - adicionando no banco de dados
+    // $response = $client->request('POST', 'http://localhost:8000/books/store', [
+    //     'json' => [
+    //         'title' => 'A menina e o porco',
+    //         'author' => 'Jason Bores'
+    //     ]
+    // ]);
+
+    // echo "Status: " . $response->getStatusCode() . PHP_EOL;
 
 
 // LIST ----------------------------------------------------------------------------------------------------------
